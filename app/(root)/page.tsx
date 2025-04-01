@@ -9,7 +9,7 @@ import {
   getInterviewsByUserId,
   getLatestInterviews,
 } from "@/lib/actions/general.action";
-
+import { dummyInterviews } from "@/constants/index";
 async function Home() {
   const user = await getCurrentUser();
 
@@ -83,12 +83,14 @@ async function Home() {
               />
             ))
           ) : (
-            <p>There are no interviews available</p>
-          )}
+            dummyInterviews?.map((interview) => (
+              <InterviewCard {...interview} key ={interview.id}/>
+          )))}
         </div>
       </section>
     </>
   );
 }
+
 
 export default Home;
